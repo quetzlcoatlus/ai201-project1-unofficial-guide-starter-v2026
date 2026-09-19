@@ -19,22 +19,25 @@ pipeline earns credit; *"80% seemed reasonable"* does not.
 
 ## 1. Retrieved chunks contain the answer
 
-For at least 4 of my 5 test questions, the retrieved chunks include one that
-contains the answer.
+For all of the test questions, the retrieved chunks include one that contains the exact answer.
 
 **Why this target:**
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
 
+I expect that the test questions will all get a precise answer because I looked through the documents for facts in order to frame them.
+
 ---
 
 ## 2. Every answer names a source
 
-Every answer the system produces names at least one source document.
+Every answer that isn't gated that the system produces names at least one source document filename.
 
 **Why this target:**
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
+
+The source document filename is important for a developer to validate the answer returned so they avoid needing an indirect method like searching for the chunk text.
 
 ---
 
@@ -53,6 +56,8 @@ in at least 4 of 5 tries.
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
 
+I expect that the balance between the distance cutoff and getting reasonable answers might allow unexpected questions through, hence the 4 of 5 rejected instead of all 5.
+
 ---
 
 ## 4. Something about your chunks
@@ -69,11 +74,11 @@ in at least 4 of 5 tries.
        - "No chunk is shorter than 200 characters, since anything below that
           in my corpus turned out to be a heading with no content under it." -->
 
-
+Chunks are segmented strictly by terminal punctuation (., !, ?), excluding periods used within numbers, times, decimals, or abbreviations. Document headers are excluded from text chunking entirely. Each resulting chunk must contain text bounded by exactly one terminal punctuation mark.
 
 **Why this target:**
 
-
+The documents are relatively short for this use case, between about 200 and 600 characters (averaging 300). Chunks that are approximately sentences will theoretically contain important context which might be absent in partial sentence chunks.
 
 ---
 
@@ -87,11 +92,11 @@ in at least 4 of 5 tries.
      present — anything, as long as it names a number or an observable
      outcome. -->
 
-
+Every question asked returns a response end-to-end within 10 seconds.
 
 **Why this target:**
 
-
+"10 seconds is about the limit for keeping the user's attention" according to [Jakob Nielson](https://www.nngroup.com/articles/response-times-3-important-limits/)'s Usability Engineering textbook
 
 ---
 

@@ -1,0 +1,14 @@
+# Milestone 1
+
+python app.py --corpus advice_threads chunks -n 1 returns 26 chunks total
+
+# Milestone 2
+
+Acceptance Criteria: For at least 4 of my 5 test questions, the top results include a chunk containing the answer
+
+Sample Questions:
+1. During winter, when does it get cold?
+2. What is the rough time that it takes to go from Aldridge Hall to the science quad?
+3. How long after the term starts can you add a course?
+4. What are the walk-in hours for the health center?
+5. Does the campus bookstore price-match?
