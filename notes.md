@@ -12,3 +12,9 @@ Sample Questions:
 3. How long after the term starts can you add a course?
 4. What are the walk-in hours for the health center?
 5. Does the campus bookstore price-match?
+
+# Milestone 3
+
+Considering paragraph chunking instead.
+
+Every campus_life doc is: header line, blank line, then paragraphs. No !/?, no ellipses, no bullets, no real abbreviations — the only non-terminal periods are decimals like $1.75, and times are written 7:00pm / 2am. Every body already ends in a period.

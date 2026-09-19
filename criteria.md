@@ -74,11 +74,11 @@ I expect that the balance between the distance cutoff and getting reasonable ans
        - "No chunk is shorter than 200 characters, since anything below that
           in my corpus turned out to be a heading with no content under it." -->
 
-Chunks are segmented strictly by terminal punctuation (., !, ?), excluding periods used within numbers, times, decimals, or abbreviations. Document headers are excluded from text chunking entirely. Each resulting chunk must contain text bounded by exactly one terminal punctuation mark.
+Chunks are segmented strictly by terminal punctuation (., !, ?), excluding periods used within numbers, times, decimals, or abbreviations. Chunks that are short are merged-forward. Document headers prepend the each chunk as: header: chunk. Each resulting chunk must contain text bounded by exactly one terminal punctuation mark.
 
 **Why this target:**
 
-The documents are relatively short for this use case, between about 200 and 600 characters (averaging 300). Chunks that are approximately sentences will theoretically contain important context which might be absent in partial sentence chunks.
+The documents are relatively short for this use case, between about 200 and 600 characters (averaging 300). Chunks that are sentences or partial sentences will theoretically contain important context which might be absent if the chunks are cutoff mid-sentence.
 
 ---
 

@@ -16,8 +16,12 @@ Allie Lane, campus_life
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+Headers are prepended to each chunk.
+The whitespace and newlines are trimmed so they're one line chunks.
+Chunks that are less than 40 characters are merged-forward or backward to create a larger chunk. Doesn't merge across paragraph breaks.
+
+**Chunk size:** Segmented by terminal punctuation, excluding periods used within numbers, times, decimals, or abbreviations.
+**Overlap:** No overlap
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -28,6 +32,8 @@ Allie Lane, campus_life
      more than pretending you got it right first time.
 
      Milestone 3. -->
+
+Sentence-esque chunks seem likely to provide relevant context without including too much additional information. The campus_life corpus is mainly fragmented sentences with a header and a few sentences.
 
 ## Sample Chunks
 
@@ -40,29 +46,34 @@ Allie Lane, campus_life
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
+**Chunk 1** — source: admin_add_drop_deadline.txt#0 `` — produced by: chunker.py::split_documents``
 
 ```
+On the add/drop deadline: You can add a course through the end of the second week.
 ```
 
-**Chunk 2** — source: `` — produced by: ``
+**Chunk 2** — source: course_cs_340.txt#1 `` — produced by: chunker.py::split_documents``
 
 ```
+CS 340 Databases: Format is lecture twice a week plus a project that runs the whole term.
 ```
 
-**Chunk 3** — source: `` — produced by: ``
+**Chunk 3** — source: course_stat_150.txt#5 `` — produced by: chunker.py::split_documents``
 
 ```
+STAT 150 Applied Statistics: The one piece of advice: the dropped midterm makes the first one low-stakes; use it to learn the format.
 ```
 
-**Chunk 4** — source: `` — produced by: ``
+**Chunk 4** — source: dining_verrill_street_grill.txt#2 `` — produced by: chunker.py::split_documents``
 
 ```
+Verrill Street Grill: The thing worth going for is the burger, which is the only late-night hot food on campus.
 ```
 
-**Chunk 5** — source: `` — produced by: ``
+**Chunk 5** — source: housing_morrow_house.txt#1 `` — produced by: chunker.py::split_documents``
 
 ```
+Morrow House — what it's actually like: Rooms are singles and doubles, hall bathrooms.
 ```
 
 ## Sample Answer
