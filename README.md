@@ -81,14 +81,17 @@ Morrow House — what it's actually like: Rooms are singles and doubles, hall ba
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
+**Question:** During winter, when does it get cold? Answer using only the information in the documents below. If they don't cover it, say you don't have enough information.
 
-**Answer:**
+**Answer:** Based on the provided documents, it is cold from mid-November to early March (winter_gear.txt).
+
+Sources retrieved: transit_walking.txt, winter_gear.txt
 
 ```
+According to winter_gear.txt, it is cold from mid-November to early March.
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff:** 0.6, kept the default because 0.52 at the middle of the distributions from the responses might fail on near-miss questions.
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -101,7 +104,16 @@ Morrow House — what it's actually like: Rooms are singles and doubles, hall ba
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-|  |  |  |
+| During winter, when does it get cold? | Yes | According to winter_gear.txt, it is cold from mid-November to early March. |
+| What is the rough time that it takes to go from Aldridge Hall to the science quad? | Yes | It takes four minutes to go from Aldridge Hall to the science quad (housing_aldridge_hall.txt and transit_walking.txt). |
+| How long after the term starts can you add a course? | Yes | You can add a course through the end of the second week (admin_add_drop_deadline.txt). |
+| What are the walk-in hours for the health center? | Yes | The walk-in hours for the health centre are from 8am to 11am (health_center.txt). |
+| Does the campus bookstore price-match? | Yes | Yes, the campus store price-matches, though it is not advertised anywhere and you must ask at the counter with the other listing on your phone. (Source: money_textbooks.txt) |
+| What is the capital of Mongolia? | No | I don't have enough information about that. |
+| How do I change the oil in a diesel engine? | No | I don't have enough information about that. |
+| Who won the 1994 World Cup? | No | I don't have enough information about that. |
+| What is the recommended dosage of ibuprofen for a headache? | No | I don't have enough information about that. |
+| How do I write a for loop in Rust? | No | I don't have enough information about that. |
 
 ## How I Used AI
 

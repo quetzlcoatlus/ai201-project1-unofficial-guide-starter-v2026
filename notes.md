@@ -18,3 +18,18 @@ Sample Questions:
 Considering paragraph chunking instead.
 
 Every campus_life doc is: header line, blank line, then paragraphs. No !/?, no ellipses, no bullets, no real abbreviations — the only non-terminal periods are decimals like $1.75, and times are written 7:00pm / 2am. Every body already ends in a period.
+
+# Milestone 4
+
+Best cutoffs for questions
+1. 0.336
+2. 0.280
+3. 0.270
+4. 0.138
+5. 0.228
+
+1. 0.787
+2. 0.866
+3. 0.819
+4. 0.840
+5. 0.837
