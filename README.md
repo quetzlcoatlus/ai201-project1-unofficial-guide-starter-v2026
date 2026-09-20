@@ -14,6 +14,8 @@ Allie Lane, campus_life
 
      Milestone 5. -->
 
+This repository looks at a set of documents in /corpora, specifically campus_life, and answers questions that the documents answer. Running `python app.py ask` prompts the user for questions in the CLI. When the question has an answer in the documents, it returns an answer and the sources that it pulled from. When the question doesn't have an answer, it returns "I don't have enough information about that."
+
 ## Chunking Strategy
 
 Headers are prepended to each chunk.
@@ -126,9 +128,9 @@ According to winter_gear.txt, it is cold from mid-November to early March.
 
      Milestone 5. -->
 
-**1.**
+**1.** I asked Claude to write the chunking function from my notes and had it ask clarifying questions wherever there was ambiguity. It added sentence level chunking with the heading attached. No overlap was implemented in this case.
 
-**2.**
+**2.** I asked Claude about the best distances for the 10 questions in `questions.py` and it explained why my initial adjustment to 0.5 might fail on near-miss questions that don't exist in OUT_OF_SCOPE so I adjusted it back to 0.6.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
