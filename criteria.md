@@ -96,7 +96,7 @@ Every question asked returns a response end-to-end within 10 seconds.
 
 **Why this target:**
 
-"10 seconds is about the limit for keeping the user's attention" according to [Jakob Nielson](https://www.nngroup.com/articles/response-times-3-important-limits/)'s Usability Engineering textbook
+I believe the retrieval of relevant chunks should be relatively fast post indexing. If no chunks meet the threshold, it skips most of the server processing like the API call. It should also be relatively quick because top-k = 3 and because there aren't many chunks in the database total. I decided on this number because "10 seconds is about the limit for keeping the user's attention" according to [Jakob Nielson](https://www.nngroup.com/articles/response-times-3-important-limits/)'s Usability Engineering textbook.
 
 ---
 
