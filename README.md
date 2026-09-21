@@ -106,16 +106,16 @@ According to winter_gear.txt, it is cold from mid-November to early March.
 
 | Question | In corpus? | Best distance |
 |---|---|---|
-| During winter, when does it get cold? | Yes | According to winter_gear.txt, it is cold from mid-November to early March. |
-| What is the rough time that it takes to go from Aldridge Hall to the science quad? | Yes | It takes four minutes to go from Aldridge Hall to the science quad (housing_aldridge_hall.txt and transit_walking.txt). |
-| How long after the term starts can you add a course? | Yes | You can add a course through the end of the second week (admin_add_drop_deadline.txt). |
-| What are the walk-in hours for the health center? | Yes | The walk-in hours for the health centre are from 8am to 11am (health_center.txt). |
-| Does the campus bookstore price-match? | Yes | Yes, the campus store price-matches, though it is not advertised anywhere and you must ask at the counter with the other listing on your phone. (Source: money_textbooks.txt) |
-| What is the capital of Mongolia? | No | I don't have enough information about that. |
-| How do I change the oil in a diesel engine? | No | I don't have enough information about that. |
-| Who won the 1994 World Cup? | No | I don't have enough information about that. |
-| What is the recommended dosage of ibuprofen for a headache? | No | I don't have enough information about that. |
-| How do I write a for loop in Rust? | No | I don't have enough information about that. |
+| During winter, when does it get cold? | Yes | 0.336 |
+| What is the rough time that it takes to go from Aldridge Hall to the science quad? | Yes | 0.280 |
+| How long after the term starts can you add a course? | Yes | 0.270 |
+| What are the walk-in hours for the health center? | Yes | 0.138 |
+| Does the campus bookstore price-match? | Yes | 0.228 |
+| What is the capital of Mongolia? | No | 0.787 |
+| How do I change the oil in a diesel engine? | No | 0.866 |
+| Who won the 1994 World Cup? | No | 0.819 |
+| What is the recommended dosage of ibuprofen for a headache? | No | 0.840 |
+| How do I write a for loop in Rust? | No | 0.837 |
 
 ## How I Used AI
 
