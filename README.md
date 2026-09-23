@@ -162,12 +162,45 @@ According to winter_gear.txt, it is cold from mid-November to early March.
 | 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
 | 2. Every answer names a source | 5 of 5 |  |  |  |  |
 | 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
+| 4. Chunks are formatted correctly as sentences with document headers prepended and bounded by one terminal punctuation mark. |  | | | | |
 | 5. | | | | | |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
      runs — the actual text your system produced, not a description of it.
      Name the file and function that produced it. -->
+
+During winter, when does it get cold?
+- run 1: pass  (best distance 0.336)
+- run 2: pass  (best distance 0.336)
+- run 3: pass  (best distance 0.336)
+
+What is the rough time that it takes to go from Aldridge Hall to the science quad?
+- run 1: fail  (best distance 0.280)
+- run 2: fail  (best distance 0.280)
+- run 3: fail  (best distance 0.280)
+
+How long after the term starts can you add a course?
+- run 1: fail  (best distance 0.270)
+- run 2: fail  (best distance 0.270)
+- run 3: fail  (best distance 0.270)
+
+What are the walk-in hours for the health center?
+- run 1: pass  (best distance 0.138)
+- run 2: pass  (best distance 0.138)
+- run 3: pass  (best distance 0.138)
+
+Does the campus bookstore price-match?
+- run 1: pass  (best distance 0.228)
+- run 2: pass  (best distance 0.228)
+- run 3: pass  (best distance 0.228)
+
+Out-of-scope questions (the gate should refuse these):
+- refused  (best distance 0.787)  What is the capital of Mongolia?
+- refused  (best distance 0.866)  How do I change the oil in a diesel engine?
+- refused  (best distance 0.819)  Who won the 1994 World Cup?
+- refused  (best distance 0.840)  What is the recommended dosage of ibuprofen for a headache?
+- refused  (best distance 0.837)  How do I write a for loop in Rust?
+     -> gate refused 5 of 5
 
 ## Verdicts
 
