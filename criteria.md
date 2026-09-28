@@ -60,7 +60,7 @@ I expect that the balance between the distance cutoff and getting reasonable ans
 
 ---
 
-## 4. Something about your chunks
+## 4. Chunks are formatted correctly 
 
 <!-- YOU WRITE THIS ONE.
 
@@ -82,7 +82,7 @@ The documents are relatively short for this use case, between about 200 and 600 
 
 ---
 
-## 5. Your choice
+## 5. Question and response is E2E within 10 seconds
 
 <!-- YOU WRITE THIS ONE TOO.
 

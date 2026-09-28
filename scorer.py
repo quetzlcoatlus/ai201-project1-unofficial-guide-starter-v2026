@@ -1,59 +1,51 @@
+from generate import generate
+
 def judge(question, expects, answer, results) -> bool:
-    return expects.lower().strip() in answer.lower()
-
     """
-    LLM as judge, can get expensive
-    rapidfuzz
+    Question is the question asked
+    Expects is the expected answer
+    Answer is the actual answer provided
+    Results are the chunks of text returned by the retrieval system
+    """
+    
+    """
+    Criteria for evaluation:
+    Check if chunks have the correct answer, LLM judge
+    Rest of criteria are by hand or in run_eval (i.e. criteria 3)
     """
 
-
-# def retrieval_hits(expects, results) -> bool:
-#     """
-#     Any part of my expect in the results
-#     """
-
-#     return any(expects.strip().lower() for chunk in results)
-
-"""
-Criteria for evaluation:
-1. Check if chunks have the correct answer, LLM judge
-2. Every answer names a source filename
-3. Relevance gate stops out-of-corpus questions
-4. Chunk format is correct
-5. Questions asked are returned within 10 seconds
-"""
-
-def answer_in_chunks(expects, results) -> bool:
     """
     Check if the expected answer is present in any of the result chunks
     Uses LLM judge to determine if the expected answer is present in any of the result chunks
     """
-    return any(expects.strip().lower() in chunk.lower() for chunk in results)
 
+    prompt = f"Expected answer: {expects}\nResult chunks: {results}"
 
-def answer_names_source(answer) -> bool:
+    system_prompt = """\
+    You are an AI assistant that judges whether the expected answer \
+    is present in the result chunks. The expected answer counts as \
+    PRESENT if a chunk states the same fact, even in different words \
+    or with extra detail around it. It is NOT present if a chunk merely \
+    discusses the same topic, or if you have to combine outside \
+    to determine the presence of the expected answer. \
+    Respond with exactly two lines:
+    REASON: <one sentence citing the chunk text that does or doesn't contain the expected answer>
+    VERDICT: <PASS or FAIL>
     """
-    Check if the answer names a source filename
-    """
-    pass
 
+    # Considered adding a three-way verdit over binary i.e. PRESENT, ABSENT, UNCLEAR
+    # For now, we stick to a binary verdict (PASS or FAIL)
 
-def gate_stops_out_of_corpus_questions(questions, results) -> bool:
-    """
-    Check if the questions that are out of corpus are stopped by the relevance gate
-    """
-    pass
+    response = generate(prompt, system_prompt, False)
+    # print("LLM response:", response)
+    # print(f"Chunks for question - {question}:", results)
+    # return True
 
+    # If I wasn't time constrained, I'd test the LLM judge's accuracy against a set of known cases
 
-def validate_chunk_format(chunks) -> bool:
-    """
-    Check if the chunk format is correct
-    """
-    pass
+    verdict = ""
+    for line in response.splitlines():
+        if line.startswith("VERDICT:"):
+            verdict = line.split(":", 1)[1].strip()
 
-
-def questions_returned_within_10_seconds(questions, results) -> bool:
-    """
-    Check if the questions asked are returned responses within 10 seconds
-    """
-    pass
+    return verdict == "PASS"
