@@ -18,6 +18,7 @@ The short version, from inside this repo after you've forked and cloned it:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+python -m nltk.downloader stopwords   # keyword search's stopword list
 cp .env.example .env          # then paste your key into .env
 python test.py
 ```
@@ -28,6 +29,7 @@ python test.py
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+python -m nltk.downloader stopwords   # keyword search's stopword list
 copy .env.example .env         # then paste your key into .env
 python test.py
 ```
@@ -84,7 +86,8 @@ switching corpora.**
 | `python app.py ask "question"` | Asks one question, end to end |
 | `python app.py ask` | Keeps asking until you press Enter on an empty line |
 | `python app.py chunks` | Prints sample chunks — **Milestone 3** |
-| `python app.py retrieve "question"` | Shows distances without spending a model call — **Milestone 4** |
+| `python app.py retrieve "question"` | Shows distances without spending a model call — **Milestone 4**. With `HYBRID` on, shows fused, semantic and BM25 scores |
+| `python bm25.py` | Prints each test question's top BM25 score and their median, which is where `BM25_C` came from |
 | `python run_eval.py --label before` | Runs every test question three times, puts every `OUT_OF_SCOPE` question through the gate, and writes a run log — **unit 2** |
 
 Useful flags:
@@ -133,6 +136,7 @@ number — three passes would produce the same three answers.
 | `ingest.py` | Loads documents off disk and cleans them — **stage 1** |
 | `chunker.py` | Splits documents into chunks — **stage 2, and the file you replace in Milestone 3** |
 | `store.py` | Embeds chunks, stores them, retrieves them with distances — **stages 3 and 4** |
+| `bm25.py` | Keyword search and the hybrid fusion `store.py::search` hands off to when `config.HYBRID` is on |
 | `gate.py` | The relevance gate. Refuses questions nothing came back close enough for |
 | `generate.py` | Writes the answer — **stage 5**. The only thing that calls out to a service |
 | `app.py` | The command line |

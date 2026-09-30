@@ -42,6 +42,10 @@ class Result:
     label: str
     distance: float   # LOWER IS BETTER. 0.3 is close, 0.9 is unrelated.
     produced_by: str
+    # Filled in by hybrid search only (bm25.py), so `retrieve` can show why a
+    # chunk ranked where it did. With hybrid on, `distance` is the fused one.
+    semantic_distance: float | None = None
+    bm25_score: float | None = None   # raw, before squashing
 
 
 _model = None
@@ -190,6 +194,12 @@ def search(
     Returns them nearest-first, each with its distance.
     """
     top_k = top_k or config.TOP_K
+
+    if config.HYBRID:
+        from bm25 import hybrid_search
+
+        return hybrid_search(question, top_k=top_k, corpus=corpus, variant=variant)
+
     name = config.collection_name(corpus, variant)
 
     try:

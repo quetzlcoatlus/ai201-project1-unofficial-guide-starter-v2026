@@ -43,7 +43,29 @@ TOP_K = 3               # how many chunks to pull back per question
 # 0.6 is a reasonable starting point, not a right answer. Milestone 4 has you
 # measure your own two groups of distances and put the cutoff in the gap.
 # Most corpora land somewhere between 0.45 and 0.75.
+#
+# Rechecked against fused distances with HYBRID on: in-scope 0.246-0.404,
+# out-of-scope 0.798-0.888. 0.6 still sits in the middle of the gap.
 THRESHOLD = 0.6
+
+
+# ─── Hybrid search (unit 2 improvement) ──────────────────────────────────────
+# With HYBRID on, `store.search` blends semantic distance with BM25 keyword
+# scores (see bm25.py) and every distance — including the one the gate checks —
+# becomes a fused distance:
+#
+#   fused_distance = 1 - [ALPHA * (1 - semantic_distance)
+#                         + (1 - ALPHA) * bm25 / (bm25 + BM25_C)]
+#
+# Still lower-is-better and between 0 and 1. With HYBRID off, search behaves
+# exactly as it did before, so the "before" run log still holds.
+
+HYBRID = os.getenv("AI201_HYBRID", "1") != "0"
+
+ALPHA = 0.7             # weight on semantic similarity; keywords get the rest
+BM25_C = 11.16          # median top BM25 score of the five in-scope questions
+                        # (`python bm25.py`), so a typical good match squashes to 0.5
+CANDIDATES = 10         # chunks pulled from EACH method before fusing to TOP_K
 
 
 # ─── Models ──────────────────────────────────────────────────────────────────

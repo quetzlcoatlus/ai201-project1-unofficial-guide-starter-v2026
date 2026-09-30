@@ -161,11 +161,20 @@ def cmd_retrieve(args):
         return
 
     print(f"\nQuestion: {args.question}\n")
-    print(f"{'#':<3} {'distance':<10} {'source':<32} preview")
-    print("-" * 100)
-    for i, r in enumerate(results, 1):
-        preview = r.text[:52].replace("\n", " ")
-        print(f"{i:<3} {r.distance:<10.4f} {r.source:<32} {preview}...")
+    if config.HYBRID:
+        # distance is the fused one; semantic and bm25 are what went into it.
+        print(f"{'#':<3} {'fused':<8} {'semantic':<9} {'bm25':<7} {'source':<32} preview")
+        print("-" * 110)
+        for i, r in enumerate(results, 1):
+            preview = r.text[:52].replace("\n", " ")
+            print(f"{i:<3} {r.distance:<8.4f} {r.semantic_distance:<9.4f} "
+                  f"{r.bm25_score:<7.3f} {r.source:<32} {preview}...")
+    else:
+        print(f"{'#':<3} {'distance':<10} {'source':<32} preview")
+        print("-" * 100)
+        for i, r in enumerate(results, 1):
+            preview = r.text[:52].replace("\n", " ")
+            print(f"{i:<3} {r.distance:<10.4f} {r.source:<32} {preview}...")
 
     decision = gate.check(results)
     print(f"\nGate: {decision.explanation}")
