@@ -132,6 +132,10 @@ According to winter_gear.txt, it is cold from mid-November to early March.
 
 **2.** I asked Claude about the best distances for the 10 questions in `questions.py` and it explained why my initial adjustment to 0.5 might fail on near-miss questions that don't exist in OUT_OF_SCOPE so I adjusted it back to 0.6.
 
+### Unit 2 Update
+
+Helped me implement the hybrid search implementation with design decisions and writing the code. Helped me spot failures and get a working output.
+
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
      claims earns nothing.
